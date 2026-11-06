@@ -10,11 +10,13 @@ RUN useradd --uid 10001 --no-create-home --shell /usr/sbin/nologin app
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-COPY app/ ./app/
+COPY app/ .
+# above dont write /app use only .
 COPY data/ ./data/
 
 RUN mkdir -p ./app/output \
- && chown -R app ./app/output
+ && chown -R app /app 
+ # dont write /app/output and dont write ./app  without .
 
 USER app
 
