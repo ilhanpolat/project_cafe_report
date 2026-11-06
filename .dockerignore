@@ -1,0 +1,52 @@
+# Version Control & IDEs
+.git
+.gitignore
+.svn
+.hg
+.vscode
+.idea
+*.swp
+*.swo
+
+# Dependencies & Python Leftovers
+node_modules
+npm-debug.log
+yarn-error.log
+vendor/
+venv/
+.venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+*.egg-info/
+
+# Build & Custom Outputs
+dist/
+build/
+target/
+output/
+*.o
+*.exe
+
+# Environment & Security Secrets
+.env
+.env.*
+*.pem
+*.key
+*.cert
+secrets/
+
+# Docker Infrastructure & Logs
+Dockerfile*
+.dockerignore
+docker-compose*.yml
+*.log
+logs/
+
+# Temporary Files & OS Artifacts
+tmp/
+coverage/
+.cache/
+.DS_Store
+Thumbs.db
