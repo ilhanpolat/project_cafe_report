@@ -14,9 +14,9 @@ COPY app/ .
 # above dont write /app use only .
 COPY data/ ./data/
 
-RUN mkdir -p ./app/output \
- && chown -R app /app 
- # dont write /app/output and dont write ./app  without .
+RUN mkdir -p /app/output \
+&& chown app /app/output
+ # write without .
 
 USER app
 
