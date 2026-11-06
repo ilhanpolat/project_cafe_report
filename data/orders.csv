@@ -1,0 +1,16 @@
+order_id,day,drink,size,quantity,price
+1,Mon,Cappuccino,large,2,3.90
+2,Mon,Espresso,small,3,2.20
+3,Mon,Latte,large,1,4.10
+4,Tue,Cappuccino,small,2,3.20
+5,Tue,Tea,small,4,2.50
+6,Tue,Latte,large,2,4.10
+7,Wed,Espresso,small,5,2.20
+8,Wed,Hot Chocolate,large,2,3.80
+9,Wed,Cappuccino,large,3,3.90
+10,Thu,Tea,small,2,2.50
+11,Thu,Latte,small,3,3.40
+12,Thu,Espresso,small,2,2.20
+13,Fri,Hot Chocolate,small,3,3.10
+14,Fri,Cappuccino,large,4,3.90
+15,Fri,Latte,large,2,4.10
