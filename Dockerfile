@@ -19,7 +19,8 @@ ENV PYTHONDONTWRITEBYTECODE=1 \
 
 WORKDIR /app
 
-RUN useradd --uid 10001 --no-create-home --shell /usr/sbin/nologin app
+RUN groupadd --gid 10001 app \
+ && useradd --uid 10001 --gid app --no-create-home --shell /usr/sbin/nologin app
 
 COPY --from=builder /opt/venv /opt/venv
 #refers to requirements.txt
@@ -29,7 +30,7 @@ COPY app/ .
 COPY data/ ./data/
 
 RUN mkdir -p /app/output \
-&& chown app /app/output
+&& chown app:app /app/output
  # write without .
 
 USER app
