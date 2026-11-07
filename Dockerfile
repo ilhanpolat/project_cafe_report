@@ -34,5 +34,14 @@ RUN mkdir -p /app/output \
  # write without .
 
 USER app
+# OCI labels:
+ARG VERSION=dev
+
+LABEL org.opencontainers.image.title="cafe-report" \
+      org.opencontainers.image.description="Weekly revenue per drink for a small cafe" \
+      org.opencontainers.image.authors="Ilhan Polat <ilhanpolatilhan@gmail.com>" \
+      org.opencontainers.image.version="${VERSION}" \
+      org.opencontainers.image.source="https://github.com/ilhanpolat/project_cafe_report.git" \
+      org.opencontainers.image.licenses="MIT"    
 
 CMD ["python", "report.py"]
