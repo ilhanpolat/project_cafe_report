@@ -21,8 +21,8 @@ WORKDIR /app
 
 RUN useradd --uid 10001 --no-create-home --shell /usr/sbin/nologin app
 
-COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+COPY --from=builder /opt/venv /opt/venv
+#refers to requirements.txt
 
 COPY app/ .
 # above dont write /app use only .
@@ -34,4 +34,4 @@ RUN mkdir -p /app/output \
 
 USER app
 
-CMD ["python", "app/etl.py"]
+CMD ["python", "report.py"]
