@@ -1,0 +1,35 @@
+name: cafe
+
+services:
+
+  # ---------- 1) the PostgreSQL database ----------
+  db:
+    image: postgres:18-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - pgdata:/var/lib/postgresql                      
+    healthcheck:                                     
+      test: ["CMD-SHELL", "pg_isready -h localhost -U ${POSTGRES_USER} -d ${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # ---------- 2) our report job, built from our Dockerfile ----------
+  report:
+    build: .
+    environment:
+      DB_HOST: db                                    # the SERVICE NAME is the host name
+      DB_NAME: ${POSTGRES_DB}
+      DB_USER: ${POSTGRES_USER}
+      DB_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./output:/app/output                             
+    depends_on:
+      db:
+        condition: service_healthy                   # start only when the health check passes
+
+volumes:
+  pgdata:                                            
